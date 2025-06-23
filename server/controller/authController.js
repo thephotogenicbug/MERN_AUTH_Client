@@ -40,10 +40,59 @@ export const register = async (req, res) => {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
-      maxAge : 7 * 24 * 60 * 60 * 1000 // 7d exp time for cookie
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7d exp time for cookie
     });
+    
+    return res.json({ success: true });
   } catch (error) {
     // if any error while creating user throw an error
+    res.json({ success: false, message: error.message });
+  }
+};
+
+// @ login user
+export const login = async (req, res) => {
+  // get email, password from request body
+  const { email, password } = req.body;
+
+  // validate email password
+  if (!email || !password) {
+    return res.json({ success: false, message: "email and password required" });
+  }
+
+  try {
+    // check if user exist from mongoDB
+    const user = await userModel.findOne({ email });
+
+    // if user does not exist send invalid email response
+    if (!user) {
+      res.json({ success: false, message: "invalid email" });
+    }
+
+    // compare user entered password and stored password from database using bcrypt
+    const isMatch = await bcrypt.compare(password, user.password);
+
+    // if passwprd does not match send invalid password response
+    if (!isMatch) {
+      res.json({ success: false, message: "invalid password" });
+    }
+
+    // if password match generate token
+    // generate the token using jwt by getting user id from mongoDB exp:7d
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "7d",
+    });
+
+    // send cookie in response
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7d exp time for cookie
+    });
+
+    return res.json({ success: true });
+  } catch (error) {
     res.json({ success: false, message: error.message });
   }
 };
