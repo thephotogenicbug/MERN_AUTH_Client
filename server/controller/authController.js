@@ -42,7 +42,7 @@ export const register = async (req, res) => {
       sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7d exp time for cookie
     });
-    
+
     return res.json({ success: true });
   } catch (error) {
     // if any error while creating user throw an error
@@ -92,6 +92,21 @@ export const login = async (req, res) => {
     });
 
     return res.json({ success: true });
+  } catch (error) {
+    res.json({ success: false, message: error.message });
+  }
+};
+
+// @logout user
+export const logout = async (req, res) => {
+  try {
+    res.clearCookie("token", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
+    });
+
+    return res.json({ success: true, message: "logged out" });
   } catch (error) {
     res.json({ success: false, message: error.message });
   }
