@@ -24,7 +24,7 @@ authRouter.post("/send-verify-otp", userAuth, sendVerifyOtp);
 // @ /api/auth/verify-account
 authRouter.post("/verify-account", userAuth, verifyEmail);
 // @ /api/auth/is-auth
-authRouter.post("/is-auth", userAuth, isAuthenticated);
+authRouter.get("/is-auth", userAuth, isAuthenticated);
 // @ /api/auth/send-reset-otp
 authRouter.post("/send-reset-otp", sendResetOtp);
 // @ /api/auth/reset-password
