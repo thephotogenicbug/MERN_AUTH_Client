@@ -10,6 +10,8 @@ export const AppContextProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userData, setUserData] = useState(false);
 
+  axios.defaults.withCredentials = true;
+
   // get auth state
   const getAuthState = async () => {
     try {
