@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { assets } from "../assets/assets";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import axios from "axios";
+import { AppContext } from "../context/AppContext";
 
 const VerifyEmail = () => {
+  const navigate = useNavigate();
+
+  axios.defaults.withCredentials = true;
+  const { backendUrl, isLoggedIn, getUserData, userData } =
+    useContext(AppContext);
+
   const inputRefs = React.useRef([]);
 
   // move focus to next input field on enter
@@ -30,6 +39,36 @@ const VerifyEmail = () => {
     });
   };
 
+  // handle form
+  const onSubmitHandler = async (e) => {
+    try {
+      e.preventDefault();
+      const otpArray = inputRefs.current.map((e) => e.value);
+      const otp = otpArray.join("");
+
+      const { data } = await axios.post(
+        backendUrl + "/api/auth/verify-account",
+        { otp }
+      );
+      if (data.success) {
+        toast.success(data.message);
+        getUserData();
+        navigate("/");
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
+  useEffect(() => {
+    isLoggedIn &&
+      userData &&
+      userData?.userData?.isAccountVerified &&
+      navigate("/");
+  }, [isLoggedIn, userData]);
+
   return (
     <div className=" flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-200 to-purple-400">
       <Link to="/">
@@ -39,7 +78,10 @@ const VerifyEmail = () => {
           className=" absolute left-5 sm:left-20 top-5 w-28 sm:w-32 cursor-pointer"
         />
       </Link>
-      <form className="bg-slate-900 p-8 rounded-lg shadow-lg w-96 text-sm">
+      <form
+        onSubmit={onSubmitHandler}
+        className="bg-slate-900 p-8 rounded-lg shadow-lg w-96 text-sm"
+      >
         <h1 className="text-white text-2xl font-semibold text-center mb-4">
           Email Verify OTP
         </h1>
