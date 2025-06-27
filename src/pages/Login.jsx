@@ -62,15 +62,15 @@ const Login = () => {
   };
 
   return (
-    <div className=" flex items-center justify-center min-h-screen px-6 sm:px-0 bg-gradient-to-br from-blue-200 to-purple-400">
+    <div className=" flex items-center justify-center min-h-screen px-6 sm:px-0 bg-gradient-to-br from-green-400 to-green-600">
       <Link to="/">
         <img
           src={assets.logo}
           alt=""
-          className=" absolute left-5 sm:left-20 top-5 w-28 sm:w-32 cursor-pointer"
+          className=" absolute left-5 sm:left-20 top-5 w-20 sm:w-28 cursor-pointer"
         />
       </Link>
-      <div className="bg-slate-900 p-10 rounded-lg shadow-lg w-full sm:w-96 text-indigo-300 text-sm">
+      <div className="bg-slate-900 p-10 rounded-lg shadow-lg w-full sm:w-96 text-green-300 text-sm">
         <h2 className="text-3xl font-semibold text-white text-center mb-3 ">
           {state === "sign up" ? "Create account" : "Login"}{" "}
         </h2>
@@ -81,7 +81,7 @@ const Login = () => {
         </p>
         <form onSubmit={onSubmitHandler}>
           {state === "sign up" && (
-            <div className=" mb-4 flex items-center gap-3 w-full px-5 py-2.5 rounded-full bg-[#333A5C]">
+            <div className=" mb-4 flex items-center gap-3 w-full px-5 py-2.5 rounded-full bg-[#335c41]">
               <img src={assets.person_icon} alt="" />
               <input
                 type="text"
@@ -94,7 +94,7 @@ const Login = () => {
             </div>
           )}
 
-          <div className=" mb-4 flex items-center gap-3 w-full px-5 py-2.5 rounded-full bg-[#333A5C]">
+          <div className=" mb-4 flex items-center gap-3 w-full px-5 py-2.5 rounded-full bg-[#335c41]">
             <img src={assets.mail_icon} alt="" />
             <input
               type="email"
@@ -105,7 +105,7 @@ const Login = () => {
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <div className=" mb-4 flex items-center gap-3 w-full px-5 py-2.5 rounded-full bg-[#333A5C]">
+          <div className=" mb-4 flex items-center gap-3 w-full px-5 py-2.5 rounded-full bg-[#335c41]">
             <img src={assets.lock_icon} alt="" />
             <input
               type="password"
@@ -117,11 +117,11 @@ const Login = () => {
             />
           </div>
           <Link to="/reset-password">
-            <p className="mb-3 text-indigo-500 cursor-pointer ">
+            <p className="mb-3 text-green-500 cursor-pointer ">
               Forgot Password?
             </p>
           </Link>
-          <button className=" w-full py-2.5 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-900 uppercase  text-white font-medium cursor-pointer">
+          <button className=" w-full py-2.5 rounded-full bg-gradient-to-r from-green-500 to-green-900 uppercase  text-white font-medium cursor-pointer">
             {state}
           </button>
         </form>

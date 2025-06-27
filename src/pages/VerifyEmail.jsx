@@ -75,7 +75,7 @@ const VerifyEmail = () => {
         <img
           src={assets.logo}
           alt=""
-          className=" absolute left-5 sm:left-20 top-5 w-28 sm:w-32 cursor-pointer"
+          className=" absolute left-5 sm:left-20 top-5 w-20 sm:w-28 cursor-pointer"
         />
       </Link>
       <form
@@ -97,14 +97,14 @@ const VerifyEmail = () => {
                 maxLength="1"
                 key={index}
                 required
-                className="w-12 h-12 bg-[#333A5C] text-white text-center text-xl rounded-md"
+                className="w-12 h-12 bg-[#335c41] text-white text-center text-xl rounded-md"
                 ref={(e) => (inputRefs.current[index] = e)}
                 onInput={(e) => handleInput(e, index)}
                 onKeyDown={(e) => handleKeyDown(e, index)}
               />
             ))}
         </div>
-        <button className="w-full py-3 bg-gradient-to-r from-indigo-500 to-indigo-900 rounded-full cursor-pointer text-white uppercase">
+        <button className="w-full py-3 bg-gradient-to-r from-green-500 to-green-900 rounded-full cursor-pointer text-white uppercase">
           Verify email
         </button>
       </form>

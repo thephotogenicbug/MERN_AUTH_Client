@@ -83,12 +83,12 @@ const ResetPassword = () => {
   };
 
   return (
-    <div className=" flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-200 to-purple-400">
+    <div className=" flex items-center justify-center min-h-screen bg-gradient-to-br from-green-400 to-green-600">
       <Link to="/">
         <img
           src={assets.logo}
           alt=""
-          className=" absolute left-5 sm:left-20 top-5 w-28 sm:w-32 cursor-pointer"
+          className=" absolute left-5 sm:left-20 top-5 w-20 sm:w-28 cursor-pointer"
         />
       </Link>
 
@@ -101,10 +101,10 @@ const ResetPassword = () => {
           <h1 className="text-white text-2xl font-semibold text-center mb-4">
             Reset password
           </h1>
-          <p className="text-center mb-6 text-indigo-400">
+          <p className="text-center mb-6 text-green-400">
             Enter your registered email address
           </p>
-          <div className="mb-4 flex items-center gap-3 w-full px-5 py-2.5 rounded-full bg-[#333A5C]">
+          <div className="mb-4 flex items-center gap-3 w-full px-5 py-2.5 rounded-full bg-[#335c41]">
             <img src={assets.mail_icon} alt="" className="w-3 h-3" />
             <input
               type="email"
@@ -115,7 +115,7 @@ const ResetPassword = () => {
               required
             />
           </div>
-          <button className="w-full py-3 bg-gradient-to-r from-indigo-500 to-indigo-900 rounded-full cursor-pointer text-white uppercase">
+          <button className="w-full py-3 bg-gradient-to-r from-green-500 to-green-900 rounded-full cursor-pointer text-white uppercase">
             Submit
           </button>
         </form>
@@ -142,14 +142,14 @@ const ResetPassword = () => {
                   maxLength="1"
                   key={index}
                   required
-                  className="w-12 h-12 bg-[#333A5C] text-white text-center text-xl rounded-md"
+                  className="w-12 h-12 bg-[#335c41] text-white text-center text-xl rounded-md"
                   ref={(e) => (inputRefs.current[index] = e)}
                   onInput={(e) => handleInput(e, index)}
                   onKeyDown={(e) => handleKeyDown(e, index)}
                 />
               ))}
           </div>
-          <button className="w-full py-2.5 bg-gradient-to-r from-indigo-500 to-indigo-900 rounded-full cursor-pointer text-white uppercase">
+          <button className="w-full py-2.5 bg-gradient-to-r from-green-500 to-green-900 rounded-full cursor-pointer text-white uppercase">
             Submit
           </button>
         </form>
@@ -167,7 +167,7 @@ const ResetPassword = () => {
           <p className="text-center mb-6 text-indigo-400">
             Enter the new password below
           </p>
-          <div className="mb-4 flex items-center gap-3 w-full px-5 py-2.5 rounded-full bg-[#333A5C]">
+          <div className="mb-4 flex items-center gap-3 w-full px-5 py-2.5 rounded-full bg-[#335c41]">
             <img src={assets.lock_icon} alt="" className="w-3 h-3" />
             <input
               type="password"
@@ -178,7 +178,7 @@ const ResetPassword = () => {
               required
             />
           </div>
-          <button className="w-full py-3 bg-gradient-to-r from-indigo-500 to-indigo-900 rounded-full cursor-pointer text-white uppercase">
+          <button className="w-full py-3 bg-gradient-to-r from-green-500 to-green-900 rounded-full cursor-pointer text-white uppercase">
             Submit
           </button>
         </form>
