@@ -85,7 +85,7 @@ const VerifyEmail = () => {
         <h1 className="text-white text-2xl font-semibold text-center mb-4">
           Email Verify OTP
         </h1>
-        <p className="text-center mb-6 text-indigo-400">
+        <p className="text-center mb-6 text-green-400">
           Enter the 6-digit code sent to your email id.
         </p>
         <div className="flex justify-between mb-8" onPaste={handlePaste}>
