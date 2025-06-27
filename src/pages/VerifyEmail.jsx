@@ -70,7 +70,7 @@ const VerifyEmail = () => {
   }, [isLoggedIn, userData]);
 
   return (
-    <div className=" flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-200 to-purple-400">
+    <div className=" flex items-center justify-center min-h-screen bg-gradient-to-br from-green-400 to-green-600">
       <Link to="/">
         <img
           src={assets.logo}
